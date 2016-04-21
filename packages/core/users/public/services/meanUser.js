@@ -43,6 +43,7 @@ angular.module('mean.users').factory('MeanUser', [ '$rootScope', '$http', '$loca
       this.registerForm = false;
       this.loggedin = false;
       this.isAdmin = false;
+      this.isWorkshop = false;
       this.loginError = 0;
       this.usernameError = null;
       this.registerError = null;
@@ -92,6 +93,7 @@ angular.module('mean.users').factory('MeanUser', [ '$rootScope', '$http', '$loca
       this.loggedin = true;
       this.loginError = 0;
       this.registerError = 0;
+      this.isWorkshop = this.user.roles.indexOf('workshop') > -1;
       this.isAdmin = this.user.roles.indexOf('admin') > -1;
       var userObj = this.user;
       // Add circles info to user
@@ -134,9 +136,13 @@ angular.module('mean.users').factory('MeanUser', [ '$rootScope', '$http', '$loca
 
     MeanUserKlass.prototype.register = function(user) {
       $http.post('/api/register', {
+        address: user.address,
+        gender: user.gender,
+        date_of_birth: user.date_of_birth,
         email: user.email,
         password: user.password,
         confirmPassword: user.confirmPassword,
+        roles: user.roles,
         username: user.username,
         name: user.name
       })
@@ -166,6 +172,7 @@ angular.module('mean.users').factory('MeanUser', [ '$rootScope', '$http', '$loca
     MeanUserKlass.prototype.logout = function(){
       this.user = {};
       this.loggedin = false;
+      this.isWorkshop = false;
       this.isAdmin = false;
 
       $http.get('/api/logout').success(function(data) {

@@ -21,4 +21,13 @@ module.exports = function(System, app, auth, database) {
 
     return res.send(config.public);
   });
+
+  //Setting up the users api
+    /*var users = require('../controllers/users');
+
+    app.get('/api/admin/users', auth.requiresLogin, users.all);
+    app.post('/api/admin/users', auth.requiresLogin, users.create);
+    app.put('/api/admin/users/:userId', auth.requiresLogin, users.update);
+    app.delete('/api/admin/users/:userId', auth.requiresLogin, users.destroy);*/
+
 };

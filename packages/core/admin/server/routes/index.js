@@ -8,9 +8,9 @@ module.exports = function(Admin, app, auth, database) {
 
     //Setting up the users api
     var users = require('../controllers/users');
-    app.get('/api/admin/users', auth.requiresAdmin, users.all);
-    app.post('/api/admin/users', auth.requiresAdmin, users.create);
-    app.put('/api/admin/users/:userId', auth.requiresAdmin, users.update);
+    app.get('/api/admin/users', auth.requiresLogin, users.all);
+    app.post('/api/admin/users', auth.requiresLogin, users.create);
+    app.put('/api/admin/users/:userId', auth.requiresLogin, users.update);
     app.delete('/api/admin/users/:userId', auth.requiresAdmin, users.destroy);
 
     //Setting up the themes api

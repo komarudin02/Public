@@ -18,14 +18,14 @@ angular.module('mean.articles').config(['$stateProvider',
         url: '/articles/create',
         templateUrl: '/articles/views/create.html',
         requiredCircles : {
-          circles: ['can create content']
+          circles: ['car']
         }
       })
       .state('edit article', {
         url: '/articles/:articleId/edit',
         templateUrl: '/articles/views/edit.html',
         requiredCircles : {
-          circles: ['can edit content']
+          circles: ['workshop']
         }
       })
       .state('article by id', {

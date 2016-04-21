@@ -22,7 +22,6 @@ angular.module('mean.users')
 
       // This object will be filled by the form
       vm.user = {};
-      
       vm.input = {
         type: 'password',
         placeholder: 'Password',
@@ -48,12 +47,13 @@ angular.module('mean.users')
       };
     }
   ])
-  .controller('RegisterCtrl', ['$rootScope', 'MeanUser',
-    function($rootScope, MeanUser) {
+  .controller('RegisterCtrl', ['$rootScope', '$filter', 'MeanUser',
+    function($rootScope, $filter, MeanUser) {
       var vm = this;
 
       vm.user = {};
-      
+      ///set default roles for join user
+      vm.user.roles = ['authenticated', 'car owner'];
       vm.registerForm = MeanUser.registerForm = true;
 
       vm.input = {

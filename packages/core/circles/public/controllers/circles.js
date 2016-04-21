@@ -14,11 +14,12 @@ angular.module('mean.circles').controller('CirclesController', ['$scope', 'Globa
                 vm.availableCircles.push(index);
             }
         });
-
+        
         vm.create = function(valid) {
             if (!valid) return;
 
             var circle = new Circles(vm.circle);
+            console.log(circle.name);
             circle.$save(function(response) {
                 vm.availableCircles.push(circle.name);
                 vm.circle = {};

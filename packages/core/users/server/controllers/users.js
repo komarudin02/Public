@@ -100,7 +100,7 @@ module.exports = function(MeanUser) {
             }
 
             // Hard coded for now. Will address this with the user permissions system in v0.3.5
-            user.roles = ['authenticated'];
+           // user.roles = ['authenticated'];
             user.save(function(err) {
                 if (err) {
                     switch (err.code) {

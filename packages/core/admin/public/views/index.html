@@ -1,4 +1,4 @@
-<div id="admin-menu" ng-controller="AdminController" ng-show="user.isAdmin">
+<div id="admin-menu" ng-controller="AdminController" ng-show="user.isAdmin || user.isWorkshop">
     <div data-ng-init="openWide=false" ng-class="{'opened': openWide}">
         <ul class="nav">
             <li class="stable" data-ng-repeat="item in menus.admin" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}" ui-sref='{{item.link}}'>

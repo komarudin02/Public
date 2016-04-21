@@ -95,7 +95,7 @@ exports.destroy = function(req, res) {
  * List of Users
  */
 exports.all = function(req, res) {
-    User.find().sort('-created').populate('user', 'name username').exec(function(err, users) {
+    User.find(req.query).sort('-created').populate('user', 'name username').exec(function(err, users) {
         if (err) {
             res.render('error', {
                 status: 500

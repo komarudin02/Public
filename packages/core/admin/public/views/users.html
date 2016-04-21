@@ -1,6 +1,4 @@
 <section data-ng-controller="UsersController" class="users">
-
-
     <form id="user-add-form" class="row-fluid form-horizontal col-sm-6 well" name="addUserForm" ng-show="showForm">
       <div ng-repeat="error in userError" class="col-sm-12">
         <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
@@ -9,7 +7,9 @@
             <div class="form-group row">
                 <label for="user-add-{{field['title']}}" class="col-sm-2 control-label">{{field['title']}}</label>
                 <div class="col-sm-10">
-                    <input data-ng-if="(field['type'] == 'text' || field['type'] == 'email' || field['type'] == 'password')" type="{{field['type']}}" class="span2 form-control" data-ng-model="user[field['schemaKey']]" placeholder="{{field['title']}}" id="user-add-{{field['title']}}" required/>
+                    <input data-ng-if="(field['type'] == 'text' || field['type'] == 'email' || field['type'] == 'password' || field['type'] == 'date')" type="{{field['type']}}" class="span2 form-control" data-ng-model="user[field['schemaKey']]" placeholder="{{field['title']}}" id="user-add-{{field['title']}}" required/>
+
+                    <input data-ng-if="(field['type'] == 'radio')" type="{{field['type']}}" class="span2 form-control-radio" ng-checked="{{field['checked']}}" data-ng-model="user[field['schemaKey']]" placeholder="{{field['title']}}" id="user-add-{{field['title']}}" value="{{field['value']}}"/>{{field['label']}}
                     <select data-ng-if="field['type'] == 'select'" data-ng-model="user[field['schemaKey']]" ng-multiple="true" multiple ng-options="option for option in field['options']" class="form-control" required>
                         <option value="">-- Choose Role --</option>
                     </select>
@@ -28,10 +28,11 @@
             Add user
         </div> -->
 
-    <div class="actions-bar" data-ng-show="users.length">
+    <!---div class="actions-bar" data-ng-show="MeanUser.user.length"-->
+    <div class="actions-bar">
        <!--  <input type="button" class="btn" data-ng-hide="edit" data-ng-click="edit=!edit" value="Edit">
         <input type="button" class="btn btn-primary" data-ng-show="edit" data-ng-click="edit=!edit" value="Done"> -->
-        <button class="btn" data-ng-hide="edit" data-ng-click="edit=!edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Edit</button>
+        <button class="btn" data-ng-hide="edit" data-ng-show="users.length" data-ng-click="edit=!edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Edit</button>
         <button class="btn btn-primary" data-ng-show="edit" data-ng-click="edit=!edit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp; Done</button>
         <button class="btn" ng-show="!showForm" ng-click="showForm=true;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add user</button>
         <!-- <input type="button" class="btn" ng-show="!showForm" ng-click="showForm=true;"/> -->

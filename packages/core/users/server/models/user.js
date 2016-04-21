@@ -48,6 +48,15 @@ var UserSchema = new Schema({
     required: true,
     get: escapeProperty
   },
+  address: {
+    type: String
+  },
+  date_of_birth: {
+    type: Date
+  },
+  gender: {
+    type: Number
+  },
   email: {
     type: String,
     required: true,
@@ -64,7 +73,7 @@ var UserSchema = new Schema({
   },
   roles: {
     type: Array,
-    default: ['authenticated', 'anonymous']
+    required: true
   },
   hashed_password: {
     type: String,
@@ -131,6 +140,9 @@ UserSchema.methods.isAdmin = function() {
   return this.roles.indexOf('admin') !== -1;
 };
 
+UserSchema.methods.isWorkshop = function() {
+  return this.roles.indexOf('workshop') !== -1;
+};
 /**
  * Authenticate - check if the passwords are the same
  *

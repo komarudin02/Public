@@ -1,24 +1,25 @@
 'use strict';
 
-angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 'Menus', '$rootScope', '$http', 'Users', 'Circles',
-    function($scope, Global, Menus, $rootScope, $http, Users, Circles) {
+angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 'MeanUser', 'Menus', '$rootScope', '$http', 'Users', 'Circles',
+    function($scope,  Global, MeanUser, Menus, $rootScope, $http, Users, Circles) {
 
         $scope.global = Global;
         $scope.user = {};
+        $scope.MeanUser = MeanUser;
 
         Circles.mine(function(acl) {
 
-            var circles = acl.allowed;
+            var circles = ($scope.MeanUser.isAdmin) ? acl.allowed : ["car owner"];
 
             $scope.userSchema = [{
+                title: ($scope.MeanUser.isWorkshop) ? 'Fullname' : 'Name',
+                schemaKey: 'name',
+                type: 'text',
+                inTable: true
+            }, {
                 title: 'Email',
                 schemaKey: 'email',
                 type: 'email',
-                inTable: true
-            }, {
-                title: 'Name',
-                schemaKey: 'name',
-                type: 'text',
                 inTable: true
             }, {
                 title: 'Username',
@@ -41,19 +42,53 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 schemaKey: 'confirmPassword',
                 type: 'password',
                 inTable: false
-            }];
-            
+            }, {
+                title: 'Date of birth',
+                schemaKey: 'date_of_birth',
+                type: 'date',
+                inTable: true
+            }, {
+                title: 'Address',
+                schemaKey: 'address',
+                type: 'text',
+                inTable: true
+            }, {
+                title: 'Gender',
+                schemaKey: 'gender',
+                type: 'radio',
+                checked:true,
+                value:0,
+                label: "Male",
+                inTable: true
+            }, {
+                title: '',
+                schemaKey: 'gender',
+                type: 'radio',
+                checked:false,
+                value:1,
+                label: "Female",
+                inTable: true
+            }];          
+            console.log( $scope.user.user.roles)
         });
 
 
 
         $scope.init = function() {
-            Users.query({}, function(users) {
-                $scope.users = users;
-            });
+            if($scope.MeanUser.isAdmin){
+                Users.query({_parentid: $scope.MeanUser.user._id}, function(users) {
+                    $scope.users = users;
+                });
+            }
+            else{
+                 Users.query({_parentid: $scope.MeanUser.user._id}, function(users) {
+                    $scope.users = users;
+                });
+            }
+            
         };
 
-        $scope.add = function(valid) {
+        $scope.add = function(valid) {console.log(valid)
             if (!valid) return;
             if (!$scope.users) $scope.users = [];
 
@@ -65,7 +100,8 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 confirmPassword: $scope.user.confirmPassword,
                 roles: $scope.user.roles
             });
-
+console.log(user);
+return
             user.$save(function(data, headers) {
                 $scope.user = {};
                 $scope.users.push(user);

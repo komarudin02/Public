@@ -6,7 +6,7 @@ angular.module('mean.admin').config(['$stateProvider', '$urlRouterProvider',
         url: '/admin/users',
         templateUrl: 'admin/views/users.html',
         requiredCircles: {
-          circles: ['admin']
+          circles: ['workshop']
         }
       }).state('themes', {
         url: '/admin/themes',

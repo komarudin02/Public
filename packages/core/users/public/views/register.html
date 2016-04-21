@@ -14,7 +14,7 @@
             <div class="error_message">Please enter a correct info #</div>
             <span class="pic user"></span>
         </div>
-
+        
         <div class="input-wrapper">
             <input required id="email_block" type="email" name="email" placeholder="Email Address"
                    ng-model="reg.user.email">
@@ -52,6 +52,31 @@
                   {{reg.input.tooltipTextConfirmPass}}
               </div>
         </span>
+
+        <div class="input-wrapper">
+            <input required id="address" type="text" name="address" placeholder="Address"
+                   ng-model="reg.user.address">
+
+            <div class="error_message">Please enter a correct info #</div>
+            <span class="pic user"></span>
+        </div>
+
+        <div class="input-wrapper">
+            <input required id="date_of_birth" type="date" name="date_of_birth" placeholder="yyyy-MM-dd"
+                   ng-model="reg.user.date_of_birth">
+
+            <div class="error_message">Please enter a correct info #</div>
+            <span class="pic user"></span>
+        </div>
+
+        <div class="input-wrapper">
+            <input ng-checked="true" id="gender_m" type="radio" ng-model="reg.user.gender" value="0">Male
+            <input id="gender_f" type="radio" ng-model="reg.user.gender" value="1">Female
+
+            <div class="error_message">Please enter a correct info #</div>
+            <span class="pic user"></span>
+        </div>
+
         </div>
 
         <div class="button_register">

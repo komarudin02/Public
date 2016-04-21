@@ -49,7 +49,6 @@ CircleSchema.statics.buildPermissions = function(callback) {
 
         //going through each of the containers parents
         containers.forEach(function(container) {
-
           if (data[container].decendants.indexOf(circle.name) === -1) {
             data[container].decendants.push(circle.name.toString());
             if (level === 0) {

@@ -18,7 +18,7 @@ Admin.register(function(app, auth, database, circles) {
     Admin.menus.add({
         title: 'admin settings',
         link: 'admin settings',
-        roles: ['admin'],
+        roles: ['admin', 'workshop'],
         menu: 'main'
     });
 
@@ -44,7 +44,7 @@ Admin.register(function(app, auth, database, circles) {
         menu: 'admin'
     });
     Admin.menus.add({
-        roles: ['admin'],
+        roles: ['admin', 'workshop'],
         title: 'USERS',
         link: 'users',
         icon: icons + 'users.png',
