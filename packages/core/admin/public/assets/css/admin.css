@@ -134,5 +134,8 @@ span.editable-wrapper input {
     margin: 20px 0;
 }
 
+.container-radio {
+    float: left
+}
 
 

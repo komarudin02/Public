@@ -48,6 +48,9 @@ var UserSchema = new Schema({
     required: true,
     get: escapeProperty
   },
+  _parentid: {
+    type: String,
+  },
   address: {
     type: String
   },

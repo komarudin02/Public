@@ -76,3 +76,20 @@ angular.module('mean.admin').directive('ngEditableSelect', function() {
         }
     };
 });
+
+angular.module('mean.admin').directive('ngEnter', function() {
+    return function(scope, elm, attrs) {
+        elm.bind('keypress', function(e) {
+            if (e.charCode === 13 && !e.ctrlKey) scope.$apply(attrs.ngEnter);
+        });
+    };
+});
+
+angular.module('mean.admin').directive('ui.bootstrap', function() {
+    return function(scope, elm, attrs) {
+        elm.bind('keypress', function(e) {
+            if (e.charCode === 13 && !e.ctrlKey) scope.$apply(attrs.ngEnter);
+        });
+    };
+});
+

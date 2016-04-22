@@ -32,8 +32,8 @@ Circles.register(function(app, auth, database) {
   Circles.models = {};
 
   Circles.registerCircle('admin');
-  Circles.registerCircle('workshop');
   Circles.registerCircle('car owner');
+  Circles.registerCircle('workshop', ['admin']);
   Circles.registerCircle('can delete content', ['admin']);
   Circles.registerCircle('can edit content', ['admin']);
   Circles.registerCircle('can create content', ['admin']);

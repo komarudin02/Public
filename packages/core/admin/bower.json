@@ -3,5 +3,6 @@
     "version": "0.3.3",
     "dependencies": {
         "ng-clip": "latest"
+        "angular-ui-bootstrap": "latest"
     }
 }

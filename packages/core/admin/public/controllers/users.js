@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 'MeanUser', 'Menus', '$rootScope', '$http', 'Users', 'Circles',
-    function($scope,  Global, MeanUser, Menus, $rootScope, $http, Users, Circles) {
-
+    function($scope, Global, MeanUser, Menus, $rootScope, $http, Users, Circles) {
         $scope.global = Global;
         $scope.user = {};
         $scope.MeanUser = MeanUser;
@@ -15,42 +14,50 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 title: ($scope.MeanUser.isWorkshop) ? 'Fullname' : 'Name',
                 schemaKey: 'name',
                 type: 'text',
+                workshop: true,
                 inTable: true
             }, {
                 title: 'Email',
                 schemaKey: 'email',
                 type: 'email',
+                workshop: true,
                 inTable: true
             }, {
                 title: 'Username',
                 schemaKey: 'username',
                 type: 'text',
+                workshop: true,
                 inTable: true
             }, {
                 title: 'Roles',
                 schemaKey: 'roles',
                 type: 'select',
+                workshop: true,
                 options: circles,
                 inTable: true
             }, {
                 title: 'Password',
                 schemaKey: 'password',
                 type: 'password',
+                workshop: true,
                 inTable: false
             }, {
                 title: 'Repeat password',
                 schemaKey: 'confirmPassword',
                 type: 'password',
+                workshop: true,
                 inTable: false
             }, {
                 title: 'Date of birth',
                 schemaKey: 'date_of_birth',
-                type: 'date',
+                type: 'text',
+                workshop: false,
                 inTable: true
             }, {
                 title: 'Address',
                 schemaKey: 'address',
                 type: 'text',
+                workshop: false,
                 inTable: true
             }, {
                 title: 'Gender',
@@ -58,6 +65,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 type: 'radio',
                 checked:true,
                 value:0,
+                workshop: false,
                 label: "Male",
                 inTable: true
             }, {
@@ -66,17 +74,15 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 type: 'radio',
                 checked:false,
                 value:1,
+                workshop: false,
                 label: "Female",
-                inTable: true
-            }];          
-            console.log( $scope.user.user.roles)
+                inTable: false
+            }];
         });
-
-
 
         $scope.init = function() {
             if($scope.MeanUser.isAdmin){
-                Users.query({_parentid: $scope.MeanUser.user._id}, function(users) {
+                Users.query({}, function(users) {
                     $scope.users = users;
                 });
             }
@@ -88,7 +94,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
             
         };
 
-        $scope.add = function(valid) {console.log(valid)
+        $scope.add = function(valid) {
             if (!valid) return;
             if (!$scope.users) $scope.users = [];
 
@@ -98,15 +104,18 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 username: $scope.user.username,
                 password: $scope.user.password,
                 confirmPassword: $scope.user.confirmPassword,
-                roles: $scope.user.roles
+                roles: $scope.user.roles,
+                gender: ($scope.user.gender) ? $scope.user.gender : 0,
+                address: $scope.user.address,
+                _parentid: ($scope.MeanUser.isWorkshop) ? $scope.MeanUser.user._id : '',
+                date_of_birth: $scope.user.date_of_birth
             });
-console.log(user);
-return
+
             user.$save(function(data, headers) {
                 $scope.user = {};
                 $scope.users.push(user);
                 $scope.userError = null;
-            }, function(data, headers) {
+            }, function(data, headers) {console.log(data);
                 $scope.userError = data.data;
             });
         };

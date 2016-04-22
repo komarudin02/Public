@@ -10,6 +10,7 @@
     "bootstrap": "latest",
     "angular-bootstrap": "latest",
     "angular-ui-router": "latest",
+    "angular-ui-bootstrap-bower": "latest",
     "web-bootstrap": "./node_modules/meanio/resources/web-bootstrap.js",
     "angular-ui-select": "latest",
     "angular-sanitize": "latest"
