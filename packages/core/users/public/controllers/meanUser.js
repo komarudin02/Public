@@ -54,6 +54,7 @@ angular.module('mean.users')
       vm.user = {};
       ///set default roles for join user
       vm.user.roles = ['authenticated', 'car owner'];
+      vm.user.gender = 0;
       vm.registerForm = MeanUser.registerForm = true;
 
       vm.input = {

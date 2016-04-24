@@ -5,6 +5,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
         $scope.global = Global;
         $scope.user = {};
         $scope.MeanUser = MeanUser;
+        $scope.user.gender = 0; //default value gender
 
         Circles.mine(function(acl) {
 
@@ -50,7 +51,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
             }, {
                 title: 'Date of birth',
                 schemaKey: 'date_of_birth',
-                type: 'text',
+                type: 'date',
                 workshop: false,
                 inTable: true
             }, {
@@ -64,7 +65,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 schemaKey: 'gender',
                 type: 'radio',
                 checked:true,
-                value:0,
+                value: 0,
                 workshop: false,
                 label: "Male",
                 inTable: true
@@ -73,7 +74,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 schemaKey: 'gender',
                 type: 'radio',
                 checked:false,
-                value:1,
+                value: 1,
                 workshop: false,
                 label: "Female",
                 inTable: false
@@ -105,7 +106,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 password: $scope.user.password,
                 confirmPassword: $scope.user.confirmPassword,
                 roles: $scope.user.roles,
-                gender: ($scope.user.gender) ? $scope.user.gender : 0,
+                gender: $scope.user.gender,
                 address: $scope.user.address,
                 _parentid: ($scope.MeanUser.isWorkshop) ? $scope.MeanUser.user._id : '',
                 date_of_birth: $scope.user.date_of_birth

@@ -4,7 +4,7 @@
     </div>
     <div class="alert alert-danger animated fadeIn" ng-show="reg.usernameError">{{reg.usernameError}}</div>
     <div class="alert alert-danger animated fadeIn" ng-show="reg.emailError">{{reg.emailError}}</div>
-    <form id="register_form" ng-submit="reg.register()">
+    <form id="register_form" name="createUser" ng-submit="reg.register()">
         <h2>Sign Up</h2>
 
         <div class="input-wrapper">
@@ -70,8 +70,10 @@
         </div>
 
         <div class="input-wrapper">
-            <input ng-checked="true" id="gender_m" type="radio" ng-model="reg.user.gender" value="0">Male
-            <input id="gender_f" type="radio" ng-model="reg.user.gender" value="1">Female
+            <!--input id="gender_m" type="radio" ng-model="reg.user.gender" value="0">Male
+            <input id="gender_f" type="radio" ng-model="reg.user.gender" value="1">Female -->
+            <label class="btn btn-primary" ng-model="reg.user.gender" class="btn btn-primary" uib-btn-radio="{{0}}">Male</label>
+            <label class="btn btn-primary" ng-model="reg.user.gender" class="btn btn-primary" uib-btn-radio="{{1}}">Female</label>
 
             <div class="error_message">Please enter a correct info #</div>
             <span class="pic user"></span>
@@ -80,7 +82,7 @@
         </div>
 
         <div class="button_register">
-            <button type="submit" class="submit_button">Sign up</button>
+            <button type="submit" ng-show="createUser.$valid" class="submit_button">Sign up</button>
             <p>Already have an account?</p>
             <a ui-sref='auth.login'>Log in</a>
         </div>

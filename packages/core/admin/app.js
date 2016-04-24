@@ -61,7 +61,7 @@ Admin.register(function(app, auth, database, circles) {
         absolute: false,
         global: true
     });
-
+    
     Admin.angularDependencies(['ngClipboard']);
     //Admin.angularDependencies(['ui.bootstrap.module.buttons']);
     // We enable routing. By default the Package Object is passed to the routes
