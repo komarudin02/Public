@@ -35,7 +35,7 @@ angular.module('mean.admin').directive('ngEditableDate', function() {
     return {
         // can be in-lined or async loaded by xhr
         // or inlined as JS string (using template property)
-        template: '<span class="editable-wrapper">' + '<span data-ng-hide="edit" data-ng-click="edit=true;value=model;">{{model | date:yyyy-mm-dd}}</span>' + '<input type="text" uib-datepicker-popup="{{yyyy-mm-dd}}" data-ng-model="value" data-ng-blur="edit = false; model = value" data-ng-show="edit" data-ng-enter="model=value;edit=false;"/>' + '</span>',
+        template: '<span class="editable-wrapper">' + '<span data-ng-hide="edit" data-ng-click="edit=true;value=model;">{{model | date: yyyy-MM-dd}}</span>' + '<input type="text" uib-datepicker-popup="{{format}}" data-ng-model="value" data-ng-blur="edit = false; model = value" data-ng-show="edit" data-ng-enter="model=value;edit=false;"/>' + '</span>',
         scope: {
             model: '=ngEditableDateModel',
             update: '&ngEditableDate'

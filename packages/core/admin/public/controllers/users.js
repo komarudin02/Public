@@ -5,6 +5,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
         $scope.global = Global;
         $scope.user = {};
         $scope.MeanUser = MeanUser;
+        $scope.format= 'yyyy-MM-dd';
         $scope.user.gender = 0; //default value gender
 
         Circles.mine(function(acl) {
@@ -90,6 +91,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
             else{
                  Users.query({_parentid: $scope.MeanUser.user._id}, function(users) {
                     $scope.users = users;
+                    $scope.users[0].date_of_birth = new Date($scope.users[0].date_of_birth);
                 });
             }
             
