@@ -5,9 +5,8 @@
     <div class="alert alert-danger animated fadeIn" ng-show="reg.usernameError">{{reg.usernameError}}</div>
     <div class="alert alert-danger animated fadeIn" ng-show="reg.emailError">{{reg.emailError}}</div>
 
-    <form id="" data-ng-submit="prf.updateUser()">
+    <form id="" data-ng-submit="prf.updateUser()" name="test">
         <h2>My profile</h2>
-
         <div class="input-wrapper-profile">
             <label>Name</label> <input required type="text" class="form-control" name="name" placeholder="Full Name" data-ng-model="prf.hdrvars.user.name">
 
@@ -15,16 +14,15 @@
             <span class="pic user"></span>
         </div>
 
-        <div class="input-wrapper-profile" data-ng-show="{{!prf.hdrvars.isWorkshop}}">
+        <div  class="input-wrapper-profile" data-ng-show="{{!prf.hdrvars.isWorkshop}}">
             <label>Date of birth</label>
-            <input ng-required="{{!prf.hdrvars.isWorkshop}}" class="form-control" id="date_of_birth" type="text" name="date_of_birth" ng-model="prf.hdrvars.user.date_of_birth"
-                   ng-model="reg.user.date_of_birth" value="{{prf.hdrvars.user.date_of_birth | date: 'yyyy-MM-dd'}}">
+            <input ng-required="{{!prf.hdrvars.isWorkshop}}" ng-model="prf.hdrvars.user.date_of_birth" uib-datepicker-popup="{{'yyyy-MM-dd'}}" class="form-control" type="text" name="date_of_birth" />
 
             <div class="error_message">Please enter a correct info #</div>
             <span class="pic user"></span>
         </div>
         
-        <div class="input-wrapper-profile">
+        <div  class="input-wrapper-profile">
             <label>Email</label>
             <input required id="email_block" type="email" class="form-control" name="email" placeholder="Email Address"
                    ng-model="prf.hdrvars.user.email">
@@ -33,16 +31,16 @@
             <span class="pic email"></span>
         </div>
 
-        <div data-ng-show="{{!prf.hdrvars.isWorkshop}}">
+        <div  class="input-wrapper-profile" data-ng-show="{{!prf.hdrvars.isWorkshop}}">
             <label>Address</label>
-            <input ng-required="{{!prf.hdrvars.isWorkshop}}"  class="form-control"id="address" type="text" name="address" placeholder="Address"
+            <input ng-required="{{!prf.hdrvars.isWorkshop}}"  class="form-control" id="address" type="text" name="address" placeholder="Address"
                    ng-model="prf.hdrvars.user.address">
 
             <div class="error_message">Please enter a correct info #</div>
             <span class="pic user"></span>
         </div>
 
-        <div class="input-wrapper-profile">
+        <div  class="input-wrapper-profile">
             <label>User Name</label>
             <input required id="username" type="text"  class="form-control" name="username" placeholder="User Name" 
                 ng-model="prf.hdrvars.user.username">
@@ -51,17 +49,16 @@
             <span class="pic username"></span>
         </div>
 
-        <div class="input-wrapper-profile" data-ng-show="{{!prf.hdrvars.isWorkshop}}">
-            <label>Gender</label>
+        <div  class="input-wrapper-profile" data-ng-show="{{!prf.hdrvars.isWorkshop}}">
             <label class="btn btn-primary" ng-model="prf.hdrvars.user.gender" class="btn btn-primary" uib-btn-radio="0">Male
             </label>
              <label class="btn btn-primary" ng-model="prf.hdrvars.user.gender" class="btn btn-primary" uib-btn-radio="1">Female
             </label>
             <div class="error_message">Please enter a correct info #</div>
             <span class="pic user"></span>
+        
         </div>
-
-        <div class="">
+        <div align="center">
             <button  class="btn" type="submit">Edit</button>
         </div>
     </form>

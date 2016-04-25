@@ -11,7 +11,7 @@ module.exports = function(Admin, app, auth, database) {
     app.get('/api/admin/users', auth.requiresLogin, users.all);
     app.post('/api/admin/users', auth.requiresLogin, users.create);
     app.put('/api/admin/users/:userId', auth.requiresLogin, users.update);
-    app.delete('/api/admin/users/:userId', auth.requiresAdmin, users.destroy);
+    app.delete('/api/admin/users/:userId', auth.requiresLogin, users.destroy);
 
     //Setting up the themes api
     var themes = require('../controllers/themes');

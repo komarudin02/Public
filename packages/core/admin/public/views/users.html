@@ -14,7 +14,7 @@
                     </div>
 
 
-                    <input data-ng-if="(field['type'] == 'date')" ng-hide="!field['workshop'] && user.roles.indexOf('workshop') >= 0" class="span2 form-control" type="date" placeholder="yyyy-mm-dd" ng-model="user[field['schemaKey']]" />
+                    <input data-ng-if="(field['type'] == 'date')" ng-hide="!field['workshop'] && user.roles.indexOf('workshop') >= 0" class="span2 form-control" type="date" placeholder="yyyy-mm-dd" ng-model="user[field['schemaKey']]" ng-required="user.roles.indexOf('workshop') == -1"/>
 
                     <select data-ng-if="field['type'] == 'select'" data-ng-model="user[field['schemaKey']]" ng-multiple="true" multiple ng-options="option for option in field['options']" class="form-control" required>
                         <option value="">-- Choose Role --</option>

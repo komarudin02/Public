@@ -3,6 +3,7 @@
 angular.module('mean.system').controller('HeaderController', ['$scope', '$rootScope', 'Users', 'Menus', 'MeanUser', '$state',
   function($scope, $rootScope, Users, Menus, MeanUser, $state) {
     var vm = this;
+    $scope.format= 'yyy-MM-dd';
     vm.menus = {};
     vm.hdrvars = {
       authenticated: MeanUser.loggedin,
@@ -11,6 +12,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', '$rootSc
       isWorkshop: MeanUser.isWorkshop,
       isAdmin: MeanUser.isAdmin
     };
+    vm.hdrvars.user.date_of_birth = new Date(MeanUser.user.date_of_birth);
 
     // Default hard coded menu items for main menu
     var defaultMainMenu = [];
