@@ -1,7 +1,7 @@
 <section data-ng-controller="UsersController" class="users">
     <form id="user-add-form" class="row-fluid form-horizontal col-sm-6 well" name="addUserForm" ng-show="showForm">
       <div ng-repeat="error in userError" class="col-sm-12">
-        <div class="alert alert-danger animated fadeIn">{{error.msg}} {{addUserForm.input.$error.date</div>
+        <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
       </div>
         <div data-ng-repeat="field in userSchema">
             <div class="form-group row">
@@ -14,7 +14,7 @@
                     </div>
 
 
-                    <input data-ng-if="(field['type'] == 'date')" ng-hide="!field['workshop'] && user.roles.indexOf('workshop') >= 0" class="span2 form-control" type="date" placeholder="yyyy-mm-dd" ng-model="user[field['schemaKey']]" ng-required="user.roles.indexOf('workshop') == -1"/>
+                    <input data-ng-if="(field['type'] == 'date')" ng-hide="!field['workshop'] && user.roles.indexOf('workshop') >= 0" class="span2 form-control" type="text" uib-datepicker-popup="{{'yyyy-MM-dd'}}" placeholder="yyyy-mm-dd" ng-model="user[field['schemaKey']]" ng-required="user.roles.indexOf('workshop') == -1"/>
 
                     <select data-ng-if="field['type'] == 'select'" data-ng-model="user[field['schemaKey']]" ng-multiple="true" multiple ng-options="option for option in field['options']" class="form-control" required>
                         <option value="">-- Choose Role --</option>

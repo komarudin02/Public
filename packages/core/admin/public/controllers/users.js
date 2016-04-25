@@ -13,7 +13,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
             var circles = ($scope.MeanUser.isAdmin) ? acl.allowed : ["car owner"];
 
             $scope.userSchema = [{
-                title: ($scope.MeanUser.isWorkshop) ? 'Fullname' : 'Name',
+                title: ($scope.MeanUser.isWorkshop) ? 'Company Name' : 'Name',
                 schemaKey: 'name',
                 type: 'text',
                 workshop: true,
@@ -59,7 +59,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 title: 'Address',
                 schemaKey: 'address',
                 type: 'text',
-                workshop: false,
+                workshop: true,
                 inTable: true
             }, {
                 title: 'Gender',
