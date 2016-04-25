@@ -5,7 +5,7 @@
     <div class="alert alert-danger animated fadeIn" ng-show="reg.usernameError">{{reg.usernameError}}</div>
     <div class="alert alert-danger animated fadeIn" ng-show="reg.emailError">{{reg.emailError}}</div>
 
-    <form id="" data-ng-submit="prf.updateUser()" name="test">
+    <form id="" data-ng-submit="prf.updateUser()" name="myProfil">
         <h2>My profile</h2>
         <div class="input-wrapper-profile">
             <label>Name</label> <input required type="text" class="form-control" name="name" placeholder="Full Name" data-ng-model="prf.hdrvars.user.name">
@@ -16,7 +16,7 @@
 
         <div  class="input-wrapper-profile" data-ng-show="{{!prf.hdrvars.isWorkshop}}">
             <label>Date of birth</label>
-            <input ng-required="{{!prf.hdrvars.isWorkshop}}" ng-model="prf.hdrvars.user.date_of_birth" uib-datepicker-popup="{{'yyyy-MM-dd'}}" class="form-control" type="text" name="date_of_birth" />
+            <input ng-required="{{!prf.hdrvars.isWorkshop}}" ng-model="prf.hdrvars.user.date_of_birth" uib-datepicker-popup="{{format}}" placeholder="{{format}}" class="form-control" type="text" name="date_of_birth" />
 
             <div class="error_message">Please enter a correct info #</div>
             <span class="pic user"></span>
@@ -59,7 +59,7 @@
         
         </div>
         <div align="center">
-            <button  class="btn" type="submit">Edit</button>
+            <button  class="btn" ng-show="myProfil.$valid" type="submit">Edit</button>
         </div>
     </form>
 </div>

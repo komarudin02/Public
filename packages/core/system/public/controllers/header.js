@@ -3,7 +3,7 @@
 angular.module('mean.system').controller('HeaderController', ['$scope', '$rootScope', 'Users', 'Menus', 'MeanUser', '$state',
   function($scope, $rootScope, Users, Menus, MeanUser, $state) {
     var vm = this;
-    $scope.format= 'yyy-MM-dd';
+    $scope.format= 'yyyy-MM-dd';
     vm.menus = {};
     vm.hdrvars = {
       authenticated: MeanUser.loggedin,
