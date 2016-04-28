@@ -13,7 +13,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
             var circles = ($scope.MeanUser.isAdmin) ? acl.allowed : ["car owner"];
 
             $scope.userSchema = [{
-                title: ($scope.MeanUser.isWorkshop) ? 'Company Name' : 'Name',
+                title: 'Name',
                 schemaKey: 'name',
                 type: 'text',
                 workshop: true,
@@ -86,6 +86,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
             if($scope.MeanUser.isAdmin){
                 Users.query({}, function(users) {
                     $scope.users = users;
+                    $scope.users[0].date_of_birth = new Date($scope.users[0].date_of_birth);
                 });
             }
             else{
@@ -111,7 +112,7 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 gender: $scope.user.gender,
                 address: $scope.user.address,
                 _parentid: ($scope.MeanUser.isWorkshop) ? $scope.MeanUser.user._id : '',
-                date_of_birth: $scope.user.date_of_birth
+                date_of_birth: new Date($scope.user.date_of_birth)
             });
 
             user.$save(function(data, headers) {
@@ -134,6 +135,8 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
         };
 
         $scope.update = function(user, userField) {
+            user.date_of_birth = new Date(user.date_of_birth);
+
             if (userField && userField === 'roles' && user.tmpRoles.indexOf('admin') !== -1 && user.roles.indexOf('admin') === -1) {
                 if (confirm('Are you sure you want to remove "admin" role?')) {
                     user.$update();

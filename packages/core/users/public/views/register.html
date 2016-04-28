@@ -62,7 +62,7 @@
         </div>
 
         <div class="input-wrapper">
-            <input required id="date_of_birth" type="date" name="date_of_birth" placeholder="yyyy-MM-dd"
+            <input required id="date_of_birth" type="text" uib-datepicker-popup="{{'yyyy-MM-dd'}}" name="date_of_birth" placeholder="yyyy-MM-dd"
                    ng-model="reg.user.date_of_birth">
 
             <div class="error_message">Please enter a correct info #</div>
