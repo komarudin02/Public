@@ -1,4 +1,4 @@
-/*{
+{
 	"adjoining-classes": false,
 	"box-model": false,
 	"box-sizing": false,
@@ -17,4 +17,4 @@
 	"unique-headings": false,
 	"universal-selector": false,
 	"unqualified-attributes": false
-}*/
+}
